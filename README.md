@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# BuildGram Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modular, strictly typed Instagram-style feed clone featuring clean component structures, isolated local state boundaries, and client-side routing. Built as part of **Assignment-2**.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
+* **Framework:** React 18 (Vite)
+* **Language:** TypeScript (Strictly typed, zero `any` usage)
+* **Routing:** React Router (`react-router-dom`)
+* **Styling:** Clean Component-level CSS / Inline Layouts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ How to Run the Code Locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Follow these precise steps to clone, install, and run this project on your local machine:
 
-## Expanding the ESLint configuration
+### 1. Clone the Repository
+```bash
+git clone [https://github.com/my_account/buildgram.git](https://github.com/my_account/buildgram.git)
+cd buildgram
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+npm run build
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+
+phase 1: Component Architecture & Routing
+
+Separated layouts into highly modular subcomponents (Navbar, Feed, Post, PostHeader, PostImage, PostActions, PostComments, and ProfilePage).
+
+Implemented full client-side navigation using <BrowserRouter>, <Routes>, and <Link> layout elements to block hard page refreshes.
+
+Utilized dynamic URL pathways (/profile/:username) via the React Router useParams hook to read profiles dynamically.
+
+Phase 2: TypeScript blueprints & Mock Database
+
+Configured strict data typing interfaces (User, Comment, PostType) in types.ts with no fallback to the any keyword.
+
+Constructed a simulated backend in mockData.ts featuring distinct profiles, custom bio fields, and pre-existing comments.
+
+Phase 3: Isolated State Boundaries & Interactivity
+
+Like Toggle: Handles custom increment and decrement loops isolated to individual post components.
+
+Bookmark Tracker: Implemented independent post bookmark saves.
+
+Controlled Comment Streams: Leveraged strict React state array spread utilities ([...comments, newComment]) to update post views immutably without altering reference points.
